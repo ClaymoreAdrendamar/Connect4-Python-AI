@@ -83,6 +83,27 @@ def minimax(node, player, alpha, beta, depth):
         return beta
 
 def computer_move2(board, player):
+    best_moves = [0,1,2,3,4,5,6]
+    o_player = get_opponent(player)
+
+    # If computer can win: play there
+    for move in board.legal_moves():
+        board.move(move, player)
+        if board.winner() == player:
+            print('Computer will play at square: {}'.format(move+1))
+            return move
+        # Undo the move
+        board.move(move, ' ', True)
+        
+    # If player can win: block the move
+    for move in board.legal_moves():
+        board.move(move, o_player)
+        if board.winner() == o_player:
+            print('Computer will block at square: {}'.format(move+1))
+            return move
+        # Undo the move
+        board.move(move, ' ', True)
+
     best = LOSE-1
     choices = []
     
