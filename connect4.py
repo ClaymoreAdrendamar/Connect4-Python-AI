@@ -93,7 +93,7 @@ def computer_move2(board, player):
         return random.choice([0,2,6,8])
     for move in board.legal_moves():
         board.move(move, player)
-        score = minimax(board, get_opponent(player), LOSE*2, WIN*2, 6)
+        score = minimax(board, get_opponent(player), LOSE+1, WIN+1, 6)
         board.move(move, ' ', True)
         print("Move: ",move+1," has a score of: ",score)
         if score > best:
