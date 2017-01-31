@@ -152,11 +152,13 @@ class Board(object):
                 
     def winner(self):
         """ Get the winner of the board """
-        if self.evaluate('X') >= WIN:
+        score = self.evaluate('X')
+        if score >= WIN:
             return 'X'
-        if self.evaluate('O') >= WIN:
+        elif score <= LOSE:
             return 'O'
-        return None
+        else:
+            return None
 
     def get_columns(self, player):
         """ Get a list of all squares taken by a certain player """
