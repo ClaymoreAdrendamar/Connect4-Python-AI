@@ -56,10 +56,7 @@ def computer_move(board, computer):
         board.move(move, ' ', True)
 
     # Else pick the best empty square
-    for move in best_moves:
-        if move in board.legal_moves():
-            print('Computer will default to square: {}'.format(move+1))
-            return move
+    return random.choice(board.legal_moves)
 
 # Minimax
 def minimax(node, player, alpha, beta, depth):
